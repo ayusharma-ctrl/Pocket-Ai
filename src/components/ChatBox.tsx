@@ -3,11 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { MessageInterface } from '@/lib/utils';
-import { getSummaries, saveSummaries } from '@/actions/authActions';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getAiSummary, getSummaries, saveSummaries } from '@/actions/authActions';
 import { toast } from 'sonner';
-
-const genAI = new GoogleGenerativeAI("AIzaSyBHji5W71nQYdcviQbXVO3ltmnoTDnkz5A");
 
 const ChatBox = ({ email }: { email: string }) => {
     const [input, setInput] = useState('');
@@ -49,17 +46,16 @@ const ChatBox = ({ email }: { email: string }) => {
                 setMessages([...messages, { text: input, sender: 'user' }]);
                 setIsLoading(true);
                 await saveSummaries(input, 'user'); // save input to db
-                // api call to get AI response
-                const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
                 const prompt = "Please summarise this document." + input;
-                const result = await model.generateContent(prompt);
-                const response = result.response;
-                const text = response.text();
-                await saveSummaries(text, 'ai'); // save result to db
-                setMessages((prevMessages) => [
-                    ...prevMessages,
-                    { text: text, sender: 'ai' },
-                ]);
+                // api call to get AI response
+                const text = await getAiSummary(prompt);
+                if (text) {
+                    await saveSummaries(text, 'ai'); // save result to db
+                    setMessages((prevMessages) => [
+                        ...prevMessages,
+                        { text: text, sender: 'ai' },
+                    ]);
+                }
                 setIsLoading(false);
                 setInput('');
                 toast.success("Success!");
