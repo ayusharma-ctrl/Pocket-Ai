@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide a email"],
         unique: true,
+        index: true
     },
     avatar: {
         type: String,

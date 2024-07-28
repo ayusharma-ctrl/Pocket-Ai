@@ -13,7 +13,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // calling a method to save user info in mongodb upon google signin
         async signIn({profile}) {
             if(profile) {
-                saveUser({
+                await saveUser({
                     name: profile?.name || "",
                     email: profile?.email || "",
                     image: profile?.picture || "",
