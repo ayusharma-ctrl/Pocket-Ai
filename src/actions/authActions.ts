@@ -72,15 +72,21 @@ export async function saveUser(userData: UserInterface) {
 }
 
 // method to fetch list of previously generated summaries
-export async function getSummaries(email: string): Promise<MessageInterface[] | []> {
+export async function getSummaries(email: string, page: number): Promise<MessageInterface[] | []> {
     try {
         if (email) {
             dbConnect();
             const userExist = await User.findOne({ email });
             if (userExist) {
+                //using pagination
+                const limit = 4;
+                const skip = (page - 1) * limit;
                 const summaries: MessageInterface[] = await Summary.find({ user: userExist._id })
+                    .sort({ createdAt: -1 })
+                    .skip(skip)
+                    .limit(limit);
                 if (summaries && summaries?.length > 0) {
-                    const plainSummaries = summaries.map(summary => ({
+                    const plainSummaries = summaries.sort().map(summary => ({
                         text: summary.text,
                         sender: summary.sender,
                     }));

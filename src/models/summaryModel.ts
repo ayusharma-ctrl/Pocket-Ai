@@ -13,8 +13,10 @@ const summarySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', // Reference to the User model
         required: true,
-    }
-})
+    },
+}, { timestamps: true });
+
+summarySchema.index({ createdAt: -1 });
 
 const Summary = mongoose.models.Summary || mongoose.model('Summary', summarySchema);
 

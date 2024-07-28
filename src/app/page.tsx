@@ -11,10 +11,10 @@ export default function Home() {
           Welcome to Pocket AI
         </h1>
         <p className="text-sm font-normal">Powered by Google Gemini AI APIs</p>
-        <div onClick={() => router.push("/ai-summary")} className="mt-8 text-xl font-bold text-blue-500 cursor-pointer">
+        <div onClick={() => router.push("/ai-summary")} className="mt-6 text-xl font-bold text-blue-500 cursor-pointer p-2 border border-black rounded-lg">
           Explore
         </div>
-        <span className="text-xs text-black font-light">Note: Please sign in to access the tool</span>
+        <span className="text-xs text-black font-light mt-1">Note: Please sign in to access the tool</span>
       </div>
     </main>
   );

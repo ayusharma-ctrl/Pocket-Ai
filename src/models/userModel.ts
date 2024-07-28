@@ -14,8 +14,12 @@ const userSchema = new mongoose.Schema({
     avatar: {
         type: String,
         required: [true, "Please provide photo url"],
+    },
+    credits: {
+        type: Number,
+        default: 0
     }
-})
+}, { timestamps: true });
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
 
