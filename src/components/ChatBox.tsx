@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { MessageInterface } from '@/lib/utils';
-import { getAiSummary, getSummaries, saveSummaries } from '@/actions/authActions';
+import { getAiSummary, getSummaries, saveSummaries } from '@/actions/docSummaryActions';
 import { toast } from 'sonner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faPlay } from "@fortawesome/free-solid-svg-icons";

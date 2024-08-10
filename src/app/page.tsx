@@ -1,5 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button";
 
 
 export default function Home() {
@@ -10,9 +11,14 @@ export default function Home() {
         <h1 className="text-xl font-bold">
           Welcome to Pocket AI
         </h1>
-        <p className="text-sm font-normal">Powered by Google Gemini AI APIs</p>
-        <div onClick={() => router.push("/ai-summary")} className="mt-6 text-xl font-bold text-blue-500 cursor-pointer p-2 border border-black rounded-lg">
-          Explore
+        <p className="text-sm font-normal">Powered by Google Gemini AI, Langchain, and OpenAI APIs</p>
+        <div className="w-3/4 flex flex-wrap justify-center gap-8 my-4">
+          <Button onClick={() => router.push("/ai-summary")} variant={"ghost"} className="mt-6 text-base font-bold text-blue-500 cursor-pointer p-2 border border-black rounded-lg">
+            Document Summarizer
+          </Button>
+          <Button onClick={() => router.push("/youtube-summary")} variant={"ghost"} className="mt-6 text-base font-bold text-red-500 cursor-pointer p-2 border border-black rounded-lg">
+            YouTube Transpiler & Summarizer
+          </Button>
         </div>
         <span className="text-xs text-black font-light mt-1">Note: Please sign in to access the tool</span>
       </div>
