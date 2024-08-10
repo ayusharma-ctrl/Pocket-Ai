@@ -139,5 +139,6 @@ export async function generateSummaryService(videoId: string) {
         }
     } catch (error) {
         console.error("Failed to generate summary:", error);
+        if (error instanceof Error) return {transcript: error.message};
     }
 }
