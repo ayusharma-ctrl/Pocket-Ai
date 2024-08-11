@@ -88,7 +88,7 @@ const YoutubeSummary = ({ email }: { email: string }): JSX.Element => {
                     <Input
                         type="text"
                         placeholder="Paste a link and click search icon"
-                        className='max-w-[90%] text-xs lg:text-sm rounded-2xl border-none outline-2 outline outline-black ml-4'
+                        className='max-w-[90%] text-xs lg:text-sm rounded-2xl border-none outline-2 outline outline-black ml-4 text-blue-600'
                         value={url}
                         onChange={(e) => handleUrlChange(e.target.value)}
                     />
