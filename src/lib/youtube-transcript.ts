@@ -26,6 +26,8 @@ async function fetchTranscript(videoId: string, config: YtFetchConfig = {}) {
             }
         );
 
+        console.log("Response: ", response);
+
         const html = await response.text();
         const parsedHtml = await parse(html);
         const transcriptUrl = await parseTranscriptEndpoint(parsedHtml, lang);
