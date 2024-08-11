@@ -18,17 +18,21 @@ async function fetchTranscript(videoId: string, config: YtFetchConfig = {}) {
     const identifier = extractYouTubeID(videoId);
     const lang = config?.lang ?? "en";
     try {
-        const transcriptUrl = await fetch(
+        const response = await fetch(
             `https://www.youtube.com/watch?v=${identifier}`,
             {
                 headers: {
                     "User-Agent": USER_AGENT,
                 },
             }
-        )
-            .then((res) => res.text())
-            .then((html) => parse(html))
-            .then((html) => parseTranscriptEndpoint(html, lang));
+        );
+
+        const html = await response.text();
+        console.log("Fetched HTML:", html); // Log the HTML content for debugging
+        const parsedHtml = await parse(html);
+        console.log("Fetched parsedHtml:", parsedHtml); // Log the parsedHtml content for debugging
+        const transcriptUrl = await parseTranscriptEndpoint(parsedHtml, lang);
+        console.log("Fetched transcriptUrl:", transcriptUrl); // Log the transcriptUrl content for debugging
 
         if (!transcriptUrl)
             throw new Error("Failed to locate a transcript for this video!");
