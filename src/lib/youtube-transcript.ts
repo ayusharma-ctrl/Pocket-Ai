@@ -5,7 +5,7 @@ const USER_AGENT =
 
 class YoutubeTranscriptError extends Error {
     constructor(message: string) {
-        super(`YoutubeTranscript ${message}`);
+        super(`[YoutubeTranscript] - ${message}`);
     }
 }
 
@@ -25,8 +25,6 @@ async function fetchTranscript(videoId: string, config: YtFetchConfig = {}) {
                 },
             }
         );
-
-        console.log("Response: ", response);
 
         const html = await response.text();
         const parsedHtml = await parse(html);
