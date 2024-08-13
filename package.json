@@ -16,6 +16,8 @@
     "@langchain/openai": "^0.2.6",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@tensorflow-models/coco-ssd": "^2.2.3",
+    "@tensorflow/tfjs": "^4.20.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "langchain": "^0.2.14",
@@ -29,7 +31,8 @@
     "react-player": "^2.16.0",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tesseract.js": "^5.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

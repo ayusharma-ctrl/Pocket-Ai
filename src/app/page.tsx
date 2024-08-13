@@ -1,6 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button";
+import { MainApps, TestApps } from "@/lib/utils";
 
 
 export default function Home() {
@@ -11,16 +12,30 @@ export default function Home() {
         <h1 className="text-xl font-bold">
           Welcome to Pocket AI
         </h1>
-        <p className="text-sm font-normal">Powered by Google Gemini AI, Langchain, and OpenAI APIs</p>
-        <div className="w-3/4 flex flex-wrap justify-center gap-8 my-4">
-          <Button onClick={() => router.push("/ai-summary")} variant={"ghost"} className="mt-6 text-base font-bold text-blue-500 cursor-pointer p-2 border border-black rounded-lg">
-            Document Summarizer
-          </Button>
-          <Button onClick={() => router.push("/youtube-summary")} variant={"ghost"} className="mt-6 text-base font-bold text-red-500 cursor-pointer p-2 border border-black rounded-lg">
-            YouTube Transpiler & Summarizer
-          </Button>
+        <p className="text-sm font-normal">Powered by Google Gemini AI, Langchain, OpenAI, and TensorFlow</p>
+        <div className="w-5/6 flex flex-wrap justify-start gap-8 my-8">
+          <div className="w-full text-base font-bold uppercase bg-gray-100 rounded-md p-2">
+            Apps
+            <span className="text-xs text-black font-light capitalize"> (Please sign in to access the tools)</span>
+          </div>
+          {
+            MainApps && MainApps.map((app, idx) =>
+              <Button key={app.label + idx} onClick={() => router.push(app.route)} variant={"ghost"} className={`${app.style} my-1 text-base font-bold cursor-pointer p-2 border-2 border-black rounded-lg`} aria-label={app.label}>
+                {app.label}
+              </Button>)
+          }
         </div>
-        <span className="text-xs text-black font-light mt-1">Note: Please sign in to access the tool</span>
+        <div className="w-5/6 flex flex-wrap justify-start gap-8 my-8">
+          <div className="w-full text-base font-bold uppercase bg-gray-100 rounded-md p-2">
+            Test Apps
+          </div>
+          {
+            TestApps && TestApps.map((app, idx) =>
+              <Button key={app.label + idx} onClick={() => router.push(app.route)} variant={"ghost"} className={`${app.style} my-1 text-base font-bold cursor-pointer p-2 border-2 border-black rounded-lg`} aria-label={app.label}>
+                {app.label}
+              </Button>)
+          }
+        </div>
       </div>
     </main>
   );

@@ -63,3 +63,19 @@ export function extractYouTubeID(urlOrID: string): string | null {
   // Return null if no match is found
   return null;
 }
+
+interface IApps {
+  label: string,
+  route: string,
+  style: string,
+}
+
+export const MainApps: IApps[] = [
+  { label: "Document Summarizer", route: "/ai-summary", style: "text-blue-500" },
+  { label: "YouTube Transpiler & Summarizer", route: "/youtube-summary", style: "text-red-500" },
+];
+
+export const TestApps: IApps[] = [
+  { label: "Image to Text (OCR)", route: "/ocr", style: "text-teal-500" },
+  { label: "Object Detection", route: "/object-detection", style: "text-sky-500" },
+];

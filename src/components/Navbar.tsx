@@ -53,6 +53,7 @@ const Navbar = () => {
                     height={40}
                     width={50}
                     alt="Logo"
+                    loading='lazy'
                 />
                 <div className='flex justify-evenly items-center gap-2 lg:gap-4'>
                     <h1 className='text-sm italic'>{user ? user.name.split(' ')[0] : "Try Now..."}</h1>
@@ -68,6 +69,7 @@ const Navbar = () => {
                             size={'sm'}
                             className='text-xs xl:text-sm'
                             type='submit'
+                            aria-label="login-logout"
                         >
                             {user ? "Logout" : "Login"}
                         </Button>

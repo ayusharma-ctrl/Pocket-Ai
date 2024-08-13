@@ -92,7 +92,7 @@ const YoutubeSummary = ({ email }: { email: string }): JSX.Element => {
                         value={url}
                         onChange={(e) => handleUrlChange(e.target.value)}
                     />
-                    <Button onClick={handleGenerate} size={'icon'} variant={'ghost'} >
+                    <Button onClick={handleGenerate} size={'icon'} variant={'ghost'} aria-label="search">
                         <FontAwesomeIcon icon={faSearch} size="2x" />
                     </Button>
                 </div>

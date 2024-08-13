@@ -174,6 +174,7 @@ const ChatBox = ({ email }: { email: string }): JSX.Element => {
                     disabled={(isLoading || input.trim().length === 0) ? true : false}
                     onClick={handleSend}
                     size={'icon'}
+                    aria-label="submit"
                 >
                     {isLoading ? <FontAwesomeIcon icon={faSpinner} size="1x" spin /> : <FontAwesomeIcon icon={faPlay} size="1x" />}
                 </Button>
