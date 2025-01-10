@@ -18,10 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Navbar/>
+      <body className={`${inter.className} flex flex-col space-y-20 items-center`}>
+        <Navbar />
         {children}
-        <Toaster/>
+        <Toaster />
       </body>
     </html>
   );
